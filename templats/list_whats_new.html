@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+
+{% block title%}Whats New List{% endblock title %}
+
+{% block body %}
+<div class="main-content app-content mt-0">
+    <div class="side-app">
+
+        <!-- CONTAINER -->
+        <div class="main-container container-fluid">
+
+            <!-- PAGE-HEADER -->
+            <h1 style="text-align: center;
+            padding: 13px;
+            margin-top: 10px;
+            margin-bottom: 9px;"><strong>Whats New List </strong></h1>
+            {% include 'message.html' %}
+            <div class="row row-cards">
+                <div class="col-xl-3 col-lg-4">
+                    <div class="row">
+                        <!-- <div class="col-md-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">Popular Filter</div>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item border-0 p-0"> <a href="javascript:void(0)"><i
+                                                    class="fe fe-chevron-right"></i> Recently Added </a><span
+                                                class="product-label">22</span> </li>
+                                        <li class="list-group-item border-0 p-0"> <a href="javascript:void(0)"><i
+                                                    class="fe fe-chevron-right"></i> Sort A-Z </a><span
+                                                class="product-label">15</span> </li>
+                                        <li class="list-group-item border-0 p-0"> <a href="javascript:void(0)"><i
+                                                    class="fe fe-chevron-right"></i> Sort Z-A </a><span
+                                                class="product-label">10</span> </li>
+                                        <li class="list-group-item border-0 p-0"> <a href="javascript:void(0)"><i
+                                                    class="fe fe-chevron-right"></i> Oldest </a><span
+                                                class="product-label">88</span> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+                <!-- COL-END -->
+               <div class="col-xl-12 col-lg-8">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card p-0">
+                                <div class="card-body p-4">
+                                    <div class="row">
+                                        <div class="col-xl-5 col-lg-8 col-md-8 col-sm-8">
+                                            <!-- <div class="input-group d-flex w-100 float-start">
+                                                <input type="text" class="form-control border-end-0 my-2"
+                                                    placeholder="Search ...">
+                                                <button
+                                                    class="btn input-group-text bg-transparent border-start-0 text-muted my-2">
+                                                    <i class="fe fe-search text-muted" aria-hidden="true"></i>
+                                                </button>
+                                            </div> -->
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                                            <ul class="nav item2-gl-menu float-end my-2">
+                                                <li class="border-end"><a href="#tab-11" class="show active"
+                                                        data-bs-toggle="tab" title="List style"><i
+                                                            class="fa fa-th"></i></a></li>
+                                               
+                                            </ul>
+                                        </div>
+                                        <div class="col-xl-3 col-lg-12">
+                                            <a href="/whats_new_save"
+                                                class="btn btn-primary btn-block float-end my-2"><i
+                                                    class="fa fa-plus-square me-2"></i>Whats New</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-11">
+                            <div class="row">
+                                {% for datafinal in datafinal %}
+                                <div class="col-md-4 col-xl-4 col-sm-4">
+                                    <div class="card">
+                                        
+                                        <div class="product-grid6">
+                                            <div class="product-image6 p-5">
+                                                <ul class="icons">
+                                                    <li>
+                                                        <a href="/view_whats_new/{{datafinal.id}}"
+                                                            class="bg-primary text-white border-primary border"> <i
+                                                                class="fe fe-eye"> </i> </a>
+                                                    </li>
+                                
+                                                </ul>
+                                                <a href="/view_whats_new/{{datafinal.id}}" class="bg-light">
+                                                    <img class="img-fluid br-7 w-60" src="/media/{{datafinal.whats_new_images1}}"
+                                                        alt="img" style="    min-height: 130px;
+                                                        max-height: 130px; object-fit: cover;
+                                                    ">
+                                                </a>
+                                            </div>
+                                            
+                                            <!-- <div class="card-body pt-0">
+                                                <div class="product-content text-center">
+                                                    <h1 class="title fw-bold fs-20">
+                                                        <a
+                                                            href="view_promotion/{{datafinal.id}}">{{datafinal.hotel_name}}</a></h1>
+                                            
+                                               
+                                                </div>
+                                            </div> -->
+                                             <div class="card-footer" style="display:flex;" >
+                                                <a href="/edit_whats_new/{{datafinal.id}}" class="btn btn-outline-primary mb-1"  style="margin-right:10px;"><i
+                                                        class="fa fa-pencil-square-o me-1"></i>Edit</a>
+                                                <a href="/distroy_whats_new/{{datafinal.id}}" class="btn btn-outline-primary mb-1"><i
+                                                        class="fa fa-trash-o me-2 wishlist-icon"></i>Delete</a>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <div class="mb-5">
+                                    <div class="float-end">
+                                        <ul class="pagination ">
+                                            <li class="page-item ">
+
+                                                {% if datafinal.has_previous %}
+                                                <a class="page-link" href="?page={{datafinal.previous_page_number}}" tabindex="-1">Previous</a>
+                                                {% endif %}
+
+                                                
+                                       
+                                            </li>
+                                            {% for page_num in datafinal.paginator.page_range %}
+                                            {% if datafinal.number == page_num %}
+                                            <li class="page-item active"><a class="page-link"
+                                                    href="?page={{page_num}}">{{page_num}}</a></li>
+                                            {% else %}
+                                            <li class="page-item "><a class="page-link"
+                                                href="?page={{page_num}}">{{page_num}}</a></li>
+                                            {% endif %}
+                                            {% endfor %}
+                   
+                                            {% if datafinal.has_next %}
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page={{datafinal.next_page_number}}">Next</a>
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!-- COL-END -->
+                </div> 
+                <!-- ROW-1 CLOSED -->
+            </div>
+        </div>
+    </div>
+    <!--app-content closed-->
+</div>
+
+
+{% endblock body %}

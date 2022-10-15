@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+
+{% block title%}Offers{% endblock title %}
+
+
+{% block body %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdz4xrgAodzerpj1Az80zVb3u-YvjG6zM&libraries=places"></script>
+
+<!--app-content open-->
+<div class="main-content app-content mt-0">
+    <div class="side-app">
+
+        <!-- CONTAINER -->
+        <div class="main-container container-fluid">
+
+            <!-- PAGE-HEADER -->
+            <section>
+                <h1 style="font-size: 1.5rem;
+                            padding: 30px;
+                            text-align: center;"><strong></strong></h1>
+
+{% include 'message.html' %}
+
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <form method="post" class="card needs-validation" action=/offer_for_you_save enctype="multipart/form-data" novalidate>
+                            {% csrf_token %}
+                            <div class="card-header">
+                                <h3 class="card-title">Offers For You</h3>
+                            </div>
+                            <div class=" card-body">
+                                <div class="row"   style="display: flex;
+                                ">
+                                    <div class="col-lg-7 col-sm-12 mb-4 mb-lg-0 ">
+                                        <input type="file" class="dropify"  name="offer_for_you_pic" data-bs-height="180" required>
+                                        <div class="invalid-feedback">
+                                            Invalid Image
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="row  mt-4">
+                                    <label class="col-md-2 form-label"> First Time Book :</label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="first_time_book" id="first_time_book" class="form-control" placeholder="First Time Book........" required>
+                                    
+                                    </div>
+                                </div>
+                                <div class="row  mt-4">
+                                    <label class="col-md-2 form-label">Coupon Code:</label>
+                                    <div class="col-md-5">
+                                        <input type="text" name="coupon_code" id="coupon_code" class="form-control" placeholder="Enter Coupon Code........" required>
+                                        <div class="invalid-feedback">
+                                            Invalid Coupon Code
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row  mt-4">
+                                    <label class="col-md-2 form-label"> Offer Details :</label>
+                                    <div class="col-md-5">
+                                        <textarea type="textarea" name="offer_Details" id="offer_Details" class="form-control" placeholder="Enter Offer Details........" required></textarea required>
+                                            <div class="invalid-feedback">
+                                                Invalid Offer Details
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div id="submit"class="col-12 mb-4" style="display: flex; justify-content: end">
+                                    <input type="submit" class="btn btn-primary"value="Upload Offer">
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+            </section>
+
+
+        </div>
+        <!-- CONTAINER CLOSED -->
+    </div>
+</div>
+<!--app-content closed-->
+
+
+{% endblock body %}

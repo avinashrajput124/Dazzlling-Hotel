@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+
+{% block title%}Update Exclusive Partners{% endblock title %}
+
+
+{% block body %}
+
+<style>
+
+.form-control{
+
+    width:60%;
+}
+#submit{
+
+
+    display: flex;
+    justify-content: flex-end;
+    align-content: space-between;
+    align-items: flex-end;
+    max-width: 95%;
+}
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdz4xrgAodzerpj1Az80zVb3u-YvjG6zM&libraries=places"></script>
+
+<!--app-content open-->
+<div class="main-content app-content mt-0">
+    <div class="side-app">
+
+        <!-- CONTAINER -->
+        <div class="main-container container-fluid">
+
+            <!-- PAGE-HEADER -->
+            <section>
+                <h1 style="font-size: 1.5rem;
+                            padding: 30px;
+                            text-align: center;"><strong></strong></h1>
+
+
+
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <form method="post" class="card" action="/update_exclusive" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="card-header">
+                                <h3 class="card-title">Update Exclusive Partners</h3>
+                            </div>
+                            <div class=" card-body">
+                                <div class="row">
+                                    <div class="col-lg-3 col-sm-12 mb-4 mb-lg-0 ">
+                                        <input type="file" name="exclusive_partners_images1"  value="{{data.exclusive_partners_images1}}" data-default-file="/media/{{data.exclusive_partners_images1}}" class="dropify" data-bs-height="180" />
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 mb-4 mb-lg-0 ">
+                                        <input type="file"  name="exclusive_partners_images2" value="{{data.exclusive_partners_images2}}" data-default-file="/media/{{data.exclusive_partners_images2}}" class="dropify" data-bs-height="180" />
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 mb-4 mb-lg-0 ">
+                                        <input type="file"  name="exclusive_partners_images3" value="{{data.exclusive_partners_images3}}" data-default-file="/media/{{data.exclusive_partners_images3}}"  class="dropify" data-bs-height="180" />
+                                    </div>
+                                    <div class="col-lg-3 col-sm-12 mb-4 mb-lg-0 ">
+                                        <input   name="id" value="{{data.id}}" hidden>
+                                        <input type="file"  name="exclusive_partners_images4" value="{{data.exclusive_partners_images4}}" data-default-file="/media/{{data.exclusive_partners_images4}}" class="dropify" data-bs-height="180" />
+                                    </div>
+                                </div>
+                              
+                                
+                                
+
+
+                            </div>
+                            <!-- <div class="row mb-4">
+                                <label class="col-md-3 form-label" style="display:flex; justify-content:center;">Hotel name :</label>
+                                <div class="col-md-9">
+                                    <input   name="id" value="{{data.id}}" hidden>
+
+                                    <input type="text"  name="hotel_name" id="hotalname" required class="form-control" value="{{data.hotel_name}}" placeholder="Hotal Name" required>
+                                </div>
+                            </div> -->
+
+                            <div class="row mb-4">
+                                <label class="col-md-3 form-label" style="display:flex; justify-content: center;">Details :</label>
+                                <div class="col-md-9">
+                                    <input type="text"  name="exclusive_partners_Details"  value="{{data.exclusive_partners_Details}}"id="exclusive_partners_Details" required class="form-control" placeholder="Enter Details..." required >
+                               
+                                    <div class="invalid-feedback">
+                                        Invalid Details
+                                       </div>
+                                </div>
+                            </div>
+                              <div id="submit"class="col-lg-3 mb-4">
+                                <input type="submit" value="update" class="btn btn-primary">
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+            </section>
+
+
+        </div>
+        <!-- CONTAINER CLOSED -->
+    </div>
+</div>
+<!--app-content closed-->
+
+
+{% endblock body %}
