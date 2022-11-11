@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+
+{% block title%}Hotal Review{% endblock title %}
+
+
+{% block body %}
+
+
+    <!-- PAGE -->
+    <div class="page">
+        <div class="page-main">
+
+            <!--app-content open-->
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
+
+                    <!-- CONTAINER -->
+                    <div class="main-container container-fluid">
+
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">Offers</h1>
+                            <div>
+                            
+                            </div>
+                        </div>
+                        <!-- PAGE-HEADER END -->
+
+                        <!-- ROW-1 OPEN -->
+                        <div class="row">
+                            <div class="col-sm-8 col-md-12 col-lg-12 col-xl-7">
+                                <div class="card productdesc">
+                                    <div class="card-body">
+                                        <div class="panel panel-primary">
+                                            <div class=" tab-menu-heading">
+                                                <div class="tabs-menu1">
+                                                    <!-- Tabs -->
+                                                    <ul class="nav panel-tabs">
+                                                        <li><a href="#tab5" class="active" data-bs-toggle="tab">Offer Details</a></li>
+                                                
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body tabs-menu-body">
+                                                <div class="tab-content">
+                                                    <a href="#"><img class="card-img-top" src="{% if Hotal_id.offer_for_you_pic %}{{ Hotal_id.offer_for_you_pic.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="And this isn&#39;t my nose. This is a false one."></a>
+
+                                                    <div class="tab-pane active" id="tab5">
+                                                        <h4 class="mb-5 mt-3 fw-bold">Details :</h4>
+                                                        <p class="mb-3 fs-15">{{Hotal_id.offer_Details}}At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident,
+                                                            similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
+                                                        </p>
+                                              
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tr>
+                                                                    <td class="fw-bold">First Time Book </td>
+                                                                    <td>{{Hotal_id.first_time_book}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Coupon Code:</td>
+                                                                    <td>{{Hotal_id.coupon_code}}</td>
+                                                                </tr>
+                                                               
+                                                                    <td class="fw-bold">Publish Date :</td>
+                                                                    <td>
+                                                                        <p class="text-muted float-start me-3">
+                                                                     
+                                                                            <span class="text-success fw-semibold">{{Hotal_id.date}}</span>
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane pt-5" id="tab6">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <tr>
+                                                                    <td class="fw-bold">Width</td>
+                                                                    <td> 6.1 inch</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Height</td>
+                                                                    <td>24 inch</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Depth</td>
+                                                                    <td>6.1 inch</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="fw-bold">Other Dimensions</td>
+                                                                    <td>15.5*15.5*24CM</td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="tab7">
+                                                        <ul class="p-5">
+                                                            <li><i class="fa fa-check me-3 text-success mb-5"></i>Asthetic Product - more lively movies and music</li>
+                                                            <li><i class="fa fa-check me-3 text-success mb-5"></i>Long lasting 7,040 mAH battery with fast adaptive charging</li>
+                                                            <li><i class="fa fa-check me-3 text-success mb-5"></i>8 MP Primary Camera, 5 MP Front Facing Camera</li>
+                                                            <li><i class="fa fa-check me-3 text-success mb-5"></i>Seamless apps and gaming experience with Qualcomm Snapdragon 662 processor (4X2.0 GHz+4X1.8 GHz)</li>
+                                                            <li><i class="fa fa-check me-3 text-success mb-5"></i>1 year manufacturer warranty for device and 6 months manufacturer warranty for in-box accessories</li>
+                                                            <li><i class="fa fa-check me-3 text-success"></i>Customer care :1234 567 678</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                              
+                                <!-- COL-END -->
+                            </div>
+                        
+          
+                           
+                            <!-- COL-END -->
+                   
+                      
+                 
+
+                        
+                            </div>
+                        </div>
+                        <!-- ROW-1 CLOSED -->
+                    </div>
+                    <!-- CONTAINER CLOSED -->
+                </div>
+            </div>
+            <!--app-content closed-->
+        </div>
+
+     
+    </div>
+
+    {% endblock body %}

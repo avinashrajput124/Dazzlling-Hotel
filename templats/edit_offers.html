@@ -1,10 +1,27 @@
 {% extends 'base.html' %}
 
 
-{% block title%}Update Offers{% endblock title %}
+{% block title %} Update Offers {% endblock title %}
 
 
 {% block body %}
+<style>
+
+    .form-control{
+    
+        width:60%;
+    }
+    #submit{
+    
+    
+        display: flex;
+        justify-content: flex-end;
+        align-content: space-between;
+        align-items: flex-end;
+        max-width: 95%;
+    }
+    
+    </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script
@@ -27,34 +44,41 @@
 
                 <div class="row">
                     <div class="col-xl-12 col-md-12">
-                        <form method="post" class="card needs-validation" action=/update_offers enctype="multipart/form-data" novalidate>
+                        <form method="post" class="card needs-validation" action=/update_offers
+                            enctype="multipart/form-data" novalidate>
                             {% csrf_token %}
                             <div class="card-header">
                                 <h3 class="card-title">Update Offers</h3>
                             </div>
                             {% include 'message.html' %}
                             <div class=" card-body">
-                                <div class="row"   style="display: flex;
+                                <div class="row" style="display: flex;
                                 ">
                                     <div class="col-lg-7 col-sm-12 mb-4 mb-lg-0 ">
-                                        <input type="file" class="dropify"   data-default-file="/media/{{data.offer_for_you_pic}}" name="offer_for_you_pic" data-bs-height="180" >
+                                        <input type="file" class="dropify"
+                                            data-default-file="/media/{{data.offer_for_you_pic}}"
+                                            name="offer_for_you_pic" data-bs-height="180">
                                         <div class="invalid-feedback">
                                             Invalid Image
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="row  mt-4">
                                     <label class="col-md-2 form-label"> First Time Book :</label>
                                     <div class="col-md-5">
-                                        <input type="text" name="first_time_book" value="{{data.first_time_book}}" id="first_time_book" class="form-control" placeholder="First Time Book........" required>
-                                    
+                                        <input type="text" name="first_time_book" value="{{data.first_time_book}}"
+                                            id="first_time_book" class="form-control"
+                                            placeholder="First Time Book........" required>
+
                                     </div>
                                 </div>
                                 <div class="row  mt-4">
                                     <label class="col-md-2 form-label">Coupon Code:</label>
                                     <div class="col-md-5">
-                                        <input type="text" name="coupon_code" id="coupon_code" class="form-control" value="{{data.coupon_code}}" placeholder="Enter Coupon Code........" required>
+                                        <input type="text" name="coupon_code" id="coupon_code" class="form-control"
+                                            value="{{data.coupon_code}}" placeholder="Enter Coupon Code........"
+                                            required>
                                         <div class="invalid-feedback">
                                             Invalid Coupon Code
                                         </div>
@@ -64,22 +88,26 @@
                                     <label class="col-md-2 form-label"> Offer Details :</label>
                                     <div class="col-md-5">
                                         <input type="hidden" name="id" value="{{data.id}}">
-                                        
-                                        <input type="textarea" name="offer_Details" id="offer_Details" class="form-control"  value="{{data.offer_Details}}" placeholder="Enter Offer Details........" required>
-                                            <div class="invalid-feedback">
-                                                Invalid Offer Details
-                                            </div>
+
+                                        <input type="textarea" name="offer_Details" id="offer_Details"
+                                            class="form-control" value="{{data.offer_Details}}"
+                                            placeholder="Enter Offer Details........" required>
+                                        <div class="invalid-feedback">
+                                            Invalid Offer Details
                                         </div>
+                                    </div>
                                 </div>
 
-                                <div id="submit"class="col-12 mb-4" style="display: flex; justify-content: end">
-                                    <input type="submit" class="btn btn-primary"value="Upload Offer">
+                                <div id="submit" class="col-12 mb-4" style="display: flex; justify-content: end">
+                                    <input type="submit" class="btn btn-primary" value="Upload Offer">
                                 </div>
 
 
                             </div>
                         </form>
+
                     </div>
+                </div>
             </section>
 
 

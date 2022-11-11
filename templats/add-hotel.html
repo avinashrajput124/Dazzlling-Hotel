@@ -30,19 +30,26 @@
                                         <div class="card-title">Add New Hotel</div>
                                     </div>
                                     <div class="card-body">
-                                        <form method="POST" action= "add_hotel" enctype="multipart/form-data">
+                                        <form method="POST"class ="needs-validation" action= "add_hotel" enctype="multipart/form-data" novalidate>
                                             {% csrf_token %}
                                             <div class="row mb-4">
                                                 <label class="col-md-3 form-label">Hotel name :</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" name="hotalname" id="hotalname" required class="form-control" placeholder="Hotal Name">
+                                                    <input type="text" name="hotalname" id="hotalname"  class="form-control" placeholder="Hotal Name" required>
+                                                    <div class="invalid-feedback">
+                                                        Invalid Hotel Name !
+                                                       </div>
+                                                  
                                                 </div>
                                             </div>
                                             
                                             <div class="row mb-4">
                                                 <label class="col-md-3 form-label"> Add Location :</label>
                                                 <div class="col-md-9">
-                                                    <input type="location" name="loc" id="loc" class="form-control" placeholder="Location/location link..">
+                                                    <input type="location" name="loc" id="loc" class="form-control" placeholder="Location/location link.." required>
+                                                    <div class="invalid-feedback">
+                                                        Invalid Locatuin !
+                                                       </div>
                                                 </div>
                                             </div>
 
@@ -52,13 +59,19 @@
                                                     <div class="col-lg-4 col-md-12">
                                                       <div class="form-group"> 
                                                         <label for="Latitude">Latitude</label>
-                                                        <input type="number" class="form-control" id="lat" name="lat" placeholder="Latitude">
+                                                        <input type="text" class="form-control" id="lat" name="lat" placeholder="Latitude" required>
+                                                        <div class="invalid-feedback">
+                                                            Invalid Latitude !
+                                                           </div>
                                                       </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">                
                                                       <div class="form-group">
                                                         <label for="Longitude">Longitude</label>
-                                                        <input type="number" class="form-control" id="long" name="long" placeholder="Longitude">
+                                                        <input type="text" class="form-control" id="long" name="long" placeholder="Longitude" required>
+                                                        <div class="invalid-feedback">
+                                                            Invalid Longitude !
+                                                           </div>
                                                       </div>
                                                     </div>
                                                 </div>
@@ -100,6 +113,9 @@
                                             <label class="col-md-3 form-label">Hotel Description :</label>
                                             <div class="col-md-9">
                                                 <textarea  type="textarea" name="dec" id="dec" required class="form-control"  placeholder="About Hotel..."></textarea>
+                                                <div class="invalid-feedback">
+                                                    Hotel Description !
+                                                   </div>
                                             </div>
                                         </div>
 

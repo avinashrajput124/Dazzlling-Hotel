@@ -8,6 +8,90 @@
 
 <style>
 
+#ground img {
+    object-fit: cover;
+    min-width: 95px;
+    max-width: 95px;
+    min-height: 70px;
+    max-height: 70px;
+    border-radius: 2px;
+}
+
+
+
+#Slider img {
+    object-fit: cover;
+    min-height: 220px;
+    max-height: 220px;
+    min-width: 300px;
+    max-width: 300px;
+    border-radius: 4px;
+}
+
+
+#tab5 img{
+   cursor: default;
+    min-height: 156px;
+    max-height: 156px;
+    max-width: 236px;
+    min-width: 236px;
+  object-fit: cover;
+
+}
+#tab6 img{
+   cursor: default;
+    min-height: 156px;
+    max-height: 156px;
+    max-width: 236px;
+    min-width: 236px;
+  object-fit: cover;
+
+}
+#tab7 img{
+   cursor: default;
+    min-height: 156px;
+    max-height: 156px;
+    max-width: 236px;
+    min-width: 236px;
+  object-fit: cover;
+
+}
+#tab8 img{
+   cursor: default;
+    min-height: 156px;
+    max-height: 156px;
+    max-width: 236px;
+    min-width: 236px;
+  object-fit: cover;
+
+}
+#tab9 img{
+   cursor: default;
+    min-height: 156px;
+    max-height: 156px;
+    max-width: 236px;
+    min-width: 236px;
+  object-fit: cover;
+
+}
+#tab10 img{
+   cursor: default;
+    min-height: 156px;
+    max-height: 156px;
+    max-width: 236px;
+    min-width: 236px;
+  object-fit: cover;
+
+}
+#tab11 img{
+   cursor: default;
+    min-height: 156px;
+    max-height: 156px;
+    max-width: 236px;
+    min-width: 236px;
+  object-fit: cover;
+
+}
 
 .overlay1 {
   position: absolute;
@@ -112,6 +196,7 @@ img1 {
                                                         <div class="product-carousel">
                                                             <div id="Slider" class="carousel slide border" data-bs-ride="false">
                                                                 <div class="carousel-inner">
+                                                                    {% if Hotal_id.Hotal_images1 %}
                                                                     <div class="carousel-item active"><img src= "{% if Hotal_id.Hotal_images1 %}{{ Hotal_id.Hotal_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="img" class="img-fluid mx-auto d-block">
                                                                         <div class="container1">
                                                                             <h6 class="title1">Banner Images</h6>
@@ -119,6 +204,7 @@ img1 {
                                                                             <div class="button1"><a href="#modaldemo8" data-bs-effect="effect-flip-vertical" data-bs-toggle="modal" data-bs-target="#extralargemodal">See All </a></div></div>
                                                                          
                                                                     </div>
+                                                                    {% endif %}
                                                                     <div class="carousel-item"> <img src="{% if Hotal_id.garden_images1 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="img" class="img-fluid mx-auto d-block">
                                                                         <div class="container1">
                                                                             <h6 class="title1">Garden Images</h6>
@@ -136,15 +222,22 @@ img1 {
                                                                     <div class="carousel-item"> <img src= "{% if Hotal_id.bedroom_images1 %}{{ Hotal_id.bedroom_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="img" class="img-fluid mx-auto d-block">
                                                                         <div class="container1">
                                                                             <h6 class="title1">Bedroom Images</h6>
-                                                                            <div class="overlay1"></div>
-                                                                            <div class="button1"><a href="#modaldemo8" data-bs-effect="effect-flip-vertical" data-bs-toggle="modal" data-bs-target="#extralargemodal">See All </a></div></div>
+                                                                            <div class="overlay1">
+                                                                            </div>
+                                                                            <div class="button1"><a href="#modaldemo8" data-bs-effect="effect-flip-vertical" data-bs-toggle="modal" data-bs-target="#extralargemodal">See All </a>
+                                                                            </div>
+                                                                        </div>
                                                                          
                                                                     </div>
                                                                     <div class="carousel-item"> <img src= "{% if Hotal_id.washroom_images1 %}{{ Hotal_id.washroom_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="img" class="img-fluid mx-auto d-block">
                                                                         <div class="container1">
                                                                             <h6 class="title1">Washroom Images</h6>
-                                                                        <div class="overlay1"></div>
-                                                                        <div class="button1"><a href="#modaldemo8" data-bs-effect="effect-flip-vertical" data-bs-toggle="modal" data-bs-target="#extralargemodal">See All </a></div></div>
+                                                                        <div class="overlay1">
+
+                                                                        </div>
+                                                                        <div class="button1"><a href="#modaldemo8" data-bs-effect="effect-flip-vertical" data-bs-toggle="modal" data-bs-target="#extralargemodal">See All </a>
+                                                                        </div>
+                                                                       </div>
                                                                      
                                                                     </div>
                                                                 </div>
@@ -153,7 +246,7 @@ img1 {
                                                         <div class="clearfix carousel-slider">
                                                             <div id="thumbcarousel" class="carousel slide" data-bs-interval="t">
                                                                 <div class="carousel-inner">
-                                                                    <ul class="carousel-item active">
+                                                                    <ul class="carousel-item active" id="ground" >
                                                                         <li data-bs-target="#Slider" data-bs-slide-to="0" class="thumb active m-2"><img src="{% if Hotal_id.Hotal_images1 %}{{ Hotal_id.Hotal_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}"  alt="img"></li>
                                                                         <li data-bs-target="#Slider" data-bs-slide-to="1" class="thumb m-2"><img src="{% if Hotal_id.garden_images1 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="img"></li>
                                                                         <li data-bs-target="#Slider" data-bs-slide-to="2" class="thumb m-2"><img src= "{% if Hotal_id.reception_images1 %}{{ Hotal_id.reception_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="img"></li>
@@ -240,7 +333,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.reception_images5 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.reception_images5 %}{{ Hotal_id.reception_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.reception_images5 %}{{ Hotal_id.reception_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Reception</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.reception_images5 %}{{ Hotal_id.reception_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.reception_images5 %}{{ Hotal_id.reception_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Reception</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.reception_images5 %}{{ Hotal_id.reception_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -269,7 +362,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.bedroom_images3 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.bedroom_images3 %}{{ Hotal_id.bedroom_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.bedroom_images3 %}{{ Hotal_id.bedroom_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Bedroom</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 "  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.bedroom_images3 %}{{ Hotal_id.bedroom_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.bedroom_images3 %}{{ Hotal_id.bedroom_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Bedroom</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.bedroom_images3 %}{{ Hotal_id.bedroom_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -277,7 +370,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.bedroom_images4 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.bedroom_images4 %}{{ Hotal_id.bedroom_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.bedroom_images4 %}{{ Hotal_id.bedroom_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Bedroom</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.bedroom_images4 %}{{ Hotal_id.bedroom_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.bedroom_images4 %}{{ Hotal_id.bedroom_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Bedroom</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.bedroom_images4 %}{{ Hotal_id.bedroom_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -285,9 +378,9 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.bedroom_images5 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Bedroom</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Bedroom</h4>">
                                                                                                             <a href="">
-                                                                                                                <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
+                                                                                                                <img class="img-responsive mb-0 br-5 mt-2" src="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
                                                                                                         </li>
                                                                                                         {% endif %}
@@ -296,7 +389,7 @@ img1 {
                                                                                                     
                                                                                                         {% if Hotal_id.washroom_images1 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images1 %}{{ Hotal_id.washroom_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images1 %}{{ Hotal_id.washroom_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images1 %}{{ Hotal_id.washroom_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images1 %}{{ Hotal_id.washroom_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.washroom_images1 %}{{ Hotal_id.washroom_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -304,7 +397,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.washroom_images2 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images2 %}{{ Hotal_id.washroom_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images2 %}{{ Hotal_id.washroom_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images2 %}{{ Hotal_id.washroom_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images2 %}{{ Hotal_id.washroom_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.washroom_images2 %}{{ Hotal_id.washroom_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -312,7 +405,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.washroom_images3 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images3 %}{{ Hotal_id.washroom_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images3 %}{{ Hotal_id.washroom_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images3 %}{{ Hotal_id.washroom_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images3 %}{{ Hotal_id.washroom_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.washroom_images3 %}{{ Hotal_id.washroom_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -320,7 +413,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.washroom_images4 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images4 %}{{ Hotal_id.washroom_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images4 %}{{ Hotal_id.washroom_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images4 %}{{ Hotal_id.washroom_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images4 %}{{ Hotal_id.washroom_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.washroom_images4 %}{{ Hotal_id.washroom_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -328,7 +421,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.washroom_images5 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images5 %}{{ Hotal_id.washroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images5 %}{{ Hotal_id.washroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images5 %}{{ Hotal_id.washroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images5 %}{{ Hotal_id.washroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.washroom_images5 %}{{ Hotal_id.washroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -341,7 +434,7 @@ img1 {
 
                                                                                                         {% if Hotal_id.garden_images1 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images1 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images1 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Garden</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images1 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images1 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Garden</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.garden_images1 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -349,7 +442,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.garden_images2 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images2 %}{{ Hotal_id.garden_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images2 %}{{ Hotal_id.garden_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Garden</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images2 %}{{ Hotal_id.garden_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images2 %}{{ Hotal_id.garden_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Garden</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.garden_images2 %}{{ Hotal_id.garden_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -357,7 +450,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.garden_images3 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images3 %}{{ Hotal_id.garden_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images3 %}{{ Hotal_id.garden_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Garden</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images3 %}{{ Hotal_id.garden_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images3 %}{{ Hotal_id.garden_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Garden</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.garden_images3 %}{{ Hotal_id.garden_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -365,7 +458,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.garden_images4 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images4 %}{{ Hotal_id.garden_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images4 %}{{ Hotal_id.garden_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Garden</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images4 %}{{ Hotal_id.garden_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images4 %}{{ Hotal_id.garden_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Garden</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.garden_images4 %}{{ Hotal_id.garden_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -373,7 +466,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.garden_images5 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images5 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images5 %}{{ Hotal_id.garden_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images5 %}{{ Hotal_id.garden_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images5 %}{{ Hotal_id.garden_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Garden</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.garden_images5 %}{{ Hotal_id.garden_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -385,7 +478,7 @@ img1 {
 
                                                                                                         {% if Hotal_id.Exterior_images1 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images1 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images1 %}{{ Hotal_id.Exterior_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images1 %}{{ Hotal_id.Exterior_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images1 %}{{ Hotal_id.Exterior_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.Exterior_images1 %}{{ Hotal_id.Exterior_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -394,7 +487,7 @@ img1 {
                                                                                                       
                                                                                                         {% if Hotal_id.Exterior_images2 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images2 %}{{ Hotal_id.garden_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images2 %}{{ Hotal_id.Exterior_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images2 %}{{ Hotal_id.Exterior_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images2 %}{{ Hotal_id.Exterior_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.Exterior_images2 %}{{ Hotal_id.Exterior_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -402,15 +495,15 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.Exterior_images3 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images3 %}{{ Hotal_id.garden_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images3 %}{{ Hotal_id.Exterior_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images3 %}{{ Hotal_id.Exterior_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images3 %}{{ Hotal_id.Exterior_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.Exterior_images3 %}{{ Hotal_id.Exterior_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
                                                                                                         </li>
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.Exterior_images4 %}
-                                                                                                       
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images4 %}{{ Hotal_id.garden_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images4 %}{{ Hotal_id.Exterior_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
+                                                                                                        
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images4 %}{{ Hotal_id.Exterior_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images4 %}{{ Hotal_id.Exterior_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.Exterior_images4 %}{{ Hotal_id.Exterior_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -418,7 +511,7 @@ img1 {
                                                                                                         {% endif %}
                                                                                                         {% if Hotal_id.Exterior_images5 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images5 %}{{ Hotal_id.garden_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images5 %}{{ Hotal_id.Exterior_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2 "  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images5 %}{{ Hotal_id.Exterior_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images5 %}{{ Hotal_id.Exterior_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
                                                                                                             <a href="">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.Exterior_images5 %}{{ Hotal_id.Exterior_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -481,9 +574,10 @@ img1 {
                                                                                                             </a>
                                                                                                         </li>
                                                                                                         {% endif %}
+                                                                                                        <br>
                                                                                                         {% if Hotal_id.reception_images5 %}
                                                                                                        
-                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.reception_images5 %}{{ Hotal_id.reception_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.reception_images5 %}{{ Hotal_id.reception_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Reception</h4>">
+                                                                                                        <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.reception_images5 %}{{ Hotal_id.reception_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.reception_images5 %}{{ Hotal_id.reception_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Reception</h4>">
                                                                                                             <a href="#lightgallery"  id="lightgallery">
                                                                                                                 <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.reception_images5 %}{{ Hotal_id.reception_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                             </a>
@@ -529,9 +623,10 @@ img1 {
                                                                                                         </a>
                                                                                                     </li>
                                                                                                     {% endif %}
+                                                                                                    <br>
                                                                                                     {% if Hotal_id.bedroom_images5 %}
                                                                                                    
-                                                                                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Bedroom</h4>">
+                                                                                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Bedroom</h4>">
                                                                                                         <a  href="#lightgallery"  id="lightgallery">
                                                                                                             <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.bedroom_images5 %}{{ Hotal_id.bedroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                         </a>
@@ -581,7 +676,7 @@ img1 {
                                                                                                     {% endif %}
                                                                                                     {% if Hotal_id.washroom_images5 %}
                                                                                                    
-                                                                                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images5 %}{{ Hotal_id.washroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images5 %}{{ Hotal_id.washroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
+                                                                                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.washroom_images5 %}{{ Hotal_id.washroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.washroom_images5 %}{{ Hotal_id.washroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
                                                                                                         <a  href="#lightgallery"  id="lightgallery">
                                                                                                             <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.washroom_images5 %}{{ Hotal_id.washroom_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                         </a>
@@ -632,9 +727,10 @@ img1 {
                                                                                                         </a>
                                                                                                     </li>
                                                                                                     {% endif %}
+                                                                                                    <br>
                                                                                                     {% if Hotal_id.garden_images5 %}
                                                                                                    
-                                                                                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images5 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images5 %}{{ Hotal_id.garden_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Washroom</h4>">
+                                                                                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.garden_images5 %}{{ Hotal_id.garden_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.garden_images5 %}{{ Hotal_id.garden_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Garden</h4>">
                                                                                                         <a  href="#lightgallery"  id="lightgallery">
                                                                                                             <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.garden_images5 %}{{ Hotal_id.garden_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                         </a>
@@ -686,7 +782,7 @@ img1 {
                                                                                                     {% endif %}
                                                                                                     {% if Hotal_id.Exterior_images5 %}
                                                                                                    
-                                                                                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images5 %}{{ Hotal_id.garden_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images5 %}{{ Hotal_id.Exterior_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
+                                                                                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 mb-md-0 mb-xl-0  border-bottom-0 mt-2"  data-bs-dismiss="modal" data-responsive="{% if Hotal_id.Exterior_images5 %}{{ Hotal_id.garden_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.Exterior_images5 %}{{ Hotal_id.Exterior_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-sub-html="<h4>Exterior</h4>">
                                                                                                         <a  href="#lightgallery"  id="lightgallery">
                                                                                                             <img class="img-responsive mb-0 br-5" src="{% if Hotal_id.Exterior_images5 %}{{ Hotal_id.Exterior_images5.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
                                                                                                         </a>
@@ -728,8 +824,8 @@ img1 {
                                                     </p>
                                                     <p class="text-muted mb-4">{{ Hotal_id.hotal_ratting }}(0) ratting</p>
                                                     <div class = "product-price">
-                                                        <p class = "fw-semibold">Hotal Type : <span>1 Room, 1 Night</span></p>
-                                                        <p class = "new-price"> Price: <span>₹ {{ Hotal_id.hotal_new_price }}</span></p>
+                                                        <!-- <p class = "fw-semibold">Hotal Type : <span>1 Room, 1 Night</span></p> -->
+                                                        <p class = "new-price"> Price: <span>₹ {{ Hotal_id.hotal_new_price }} {{Hotal_id.hotal_new_price_premium}}</span></p>
                                                       </div>
                                                       <div style="margin-bottom: 30px;">
                                                         <h5><strong>Hotal Location :</strong> {{ Hotal_id.Hotal_Location }}</h5>

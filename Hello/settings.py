@@ -26,7 +26,7 @@ MESSAGE_TAGS = {
  }
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = str(Path(__file__).resolve().parent.parent)
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # str add in base dir avinash
 
@@ -40,7 +40,7 @@ SECRET_KEY = 'django-insecure-p@2r&c^)lu=1#89^=0w&-%nyd+4#@jk+vm2ms+o^d+%-i(h!@8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['156.67.208.17']
+ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'ello.User'
 # Application definition
@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # "mapbox_location_field",
     'rest_framework',
+    'rest_framework.authtoken'
+   
 
 ]
 
@@ -90,32 +92,40 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Hello.wsgi.application'
 
+REST_FRAMEWORK = {
 
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+     'DEFAULT_PERMISSION_CLASSES':(
+                'rest_framework.permissions.IsAuthenticated',
+    ),
+}
 # Database
-# import dj_database_url 
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+import dj_database_url 
+#https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
- 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dazzlling',
-        'USER': 'dazzlling',
-        'PASSWORD': 'Vpsroot@123',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR /'db.sqlite3',
     }
 }
+ 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'dazzlling',
+#         'USER': 'dazzlling',
+#         'PASSWORD': 'Vpsroot@123',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
-# prod_db  =  dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -153,11 +163,11 @@ DISABLE_COLLECTSTATIC=1
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),]
 # PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")

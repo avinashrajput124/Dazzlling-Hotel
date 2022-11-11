@@ -6,13 +6,9 @@ from django.core.paginator import Paginator
 from django.contrib.auth import login, logout,authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-# from ello.form import PASignUpForm
 from ello.models import User
-# from django.views.generic import CreateView
-# from django.contrib.auth.models import User 
 from django.contrib.auth import get_user_model
 import math
-# import datetime import timesnce
 from django.core.paginator  import Paginator
 import math
 from ello.decorator import admin_required
@@ -23,7 +19,7 @@ User = get_user_model()
 
 @admin_required()
 def home(request):
-       hotal = Add_Hotal.objects.all()[:3]
+       hotal = Add_Hotal.objects.all().order_by('-Hotal_Name')[:6]
        perm = {'hotal':hotal}
 
        return render(request, "home.html", perm)
@@ -140,9 +136,11 @@ def hotal_view(request, id):
 
 @admin_required()
 def hotel_list(request):
-       x = Add_Hotal.objects.all()
-       tottal_hotal = len(x)
-       print(request.GET)      
+       x = Add_Hotal.objects.all().order_by('-Hotal_Name')
+       paginator=Paginator(x,6)
+       page_number=request.GET.get('page')
+       datafinal=paginator.get_page(page_number)
+       tottal_hotal = len(x)     
        no_of_posts = 3
        page = request.GET.get('page')
        if page is None:
@@ -152,7 +150,7 @@ def hotel_list(request):
       
 
 
-       '''This function is used to access the data from the database and sending it to the frontend.'''
+       # '''This function is used to access the data from the database and sending it to the frontend.'''
        hotal = Add_Hotal.objects.all()
        
        length = len(hotal)
@@ -170,7 +168,7 @@ def hotel_list(request):
 
 
 
-       params = {'hotal' : hotal, 'prev' : prev, 'nxt' : nxt, 'tottal_hotal':tottal_hotal}
+       params = {'hotal' : hotal,'datafinal':datafinal,'page_number':page_number,'tottal_hotal':tottal_hotal}
        return render(request, "hotel-list.html", params)
 
 
@@ -213,6 +211,7 @@ def hotel_list_filter(request):
                      hotal = Add_Hotal.objects.all().filter(hotal_ratting__icontains=0)
               else:
                      hotal = Add_Hotal.objects.all()
+                     
        
 
        params = {'hotal' : hotal,'tottal_hotal':tottal_hotal}
@@ -224,6 +223,7 @@ def add_hotel(request):
               # Hotal_id = request.POST.get('Hotal_id')
               Hotal_Name = request.POST.get('hotalname')
               hotal_new_price = request.POST.get('newprice')
+              hotal_new_price_premium = request.POST.get('hotal_new_price_premium')
               hotal_discreption = request.POST.get('dec')
               Hotal_Location = request.POST.get('loc')
               Hotal_Latitude = request.POST.get('lat')
@@ -261,7 +261,7 @@ def add_hotel(request):
               garden_images5 = request.FILES.get('garden_images5')
               date = request.POST.get('datetime.today()')
 
-              data = Add_Hotal(Hotal_Name=Hotal_Name, hotal_new_price=hotal_new_price,
+              data = Add_Hotal(Hotal_Name=Hotal_Name, hotal_new_price=hotal_new_price,hotal_new_price_premium=hotal_new_price_premium,
               hotal_discreption = hotal_discreption, Hotal_Location=Hotal_Location, Hotal_Latitude=Hotal_Latitude, Hotal_Longitude=Hotal_Longitude, Hotal_images1=Hotal_images1,
                date=date,
               reception_images1=reception_images1,reception_images2=reception_images2,reception_images3=reception_images3,reception_images4=reception_images4,reception_images5=reception_images5,
@@ -272,6 +272,8 @@ def add_hotel(request):
               )
        
               data.save()
+              messages.success(request,'Hotel Added Sucessfully')
+              return redirect('hotel_list')
        return render(request, "add-hotel.html")
 
 
@@ -317,68 +319,214 @@ def update_hotal(request, id):
               return render(request, 'update_hotal.html', cotext)
 @admin_required()
 def edit_hotal(request, id):
-       print(request.POST)
+       update=Add_Hotal.objects.get(Hotal_id=id)
        if request.method == "POST":
-              Hotal_Name = request.POST.get('hotalname')
-              hotal_new_price = request.POST.get('newprice')
-              hotal_new_price_premium = request.POST.get('hotal_new_price_premium')
-              hotal_discreption = request.POST.get('dec')
-              Hotal_Location = request.POST.get('loc')
-              Hotal_Latitude = request.POST.get('lat')
-              Hotal_Longitude = request.POST.get('long')
-              Hotal_images1 = request.FILES.get('Hotal_images1')
-              
-              # recettion images
-              reception_images1 = request.FILES.get('reception_images1')
-              reception_images2 = request.FILES.get('reception_images2')
-              reception_images3 = request.FILES.get('reception_images3')
-              reception_images4= request.FILES.get('reception_images4')
-              reception_images5 = request.FILES.get('reception_images5')
-              # bedroom images
-              bedroom_images1 = request.FILES.get('bedroom_images1')
-              bedroom_images2 = request.FILES.get('bedroom_images2')
-              bedroom_images3 = request.FILES.get('bedroom_images3')
-              bedroom_images4= request.FILES.get('bedroom_images4')
-              bedroom_images5 = request.FILES.get('bedroom_images5')
-              # washroom images
-              washroom_images1 = request.FILES.get('washroom_images1')
-              washroom_images2 = request.FILES.get('washroom_images2')
-              washroom_images3 = request.FILES.get('washroom_images3')
-              washroom_images4= request.FILES.get('washroom_images4')
-              washroom_images5 = request.FILES.get('washroom_images5')
-              # exterior images
-              Exterior_images1 = request.FILES.get('Exterior_images1')
-              Exterior_images2 = request.FILES.get('Exterior_images2')
-              Exterior_images3 = request.FILES.get('Exterior_images3')
-              Exterior_images4= request.FILES.get('Exterior_images4')
-              Exterior_images5 = request.FILES.get('Exterior_images5')
-              # garden images
-              garden_images1 = request.FILES.get('garden_images1')
-              garden_images2 = request.FILES.get('garden_images2')
-              garden_images3 = request.FILES.get('garden_images3')
-              garden_images4= request.FILES.get('garden_images4')
-              garden_images5 = request.FILES.get('garden_images5')
-              date = request.POST.get('datetime.today()')
+              if request.POST.get('hotalname') is not None:
+                     update.Hotal_Name = request.POST.get('hotalname')
+                     
+              else:
+                     update.Hotal_Name = update.Hotal_Name
+              if request.POST.get('newprice') is not None:
+                     update.hotal_new_price = request.POST.get('newprice')
+                     
+              else:
+                     update.hotal_new_price = update.hotal_new_price
+              if request.POST.get('hotal_new_price_premium') is not None:
+                     update.hotal_new_price_premium = request.POST.get('hotal_new_price_premium')
+                     
+              else:
+                     update.hotal_new_price_premium = update.hotal_new_price_premium
+              if request.POST.get('dec') is not None:
+                     update.hotal_discreption = request.POST.get('dec')
+                     
+              else:
+                     update.hotal_discreption = update.hotal_discreption
+              if request.POST.get('loc') is not None:
+                     update.Hotal_Location = request.POST.get('loc')
+                     
+              else:
+                     update.Hotal_Location = update.Hotal_Location
+              if request.POST.get('lat') is not None:
+                     update.Hotal_Latitude = request.POST.get('lat')
+                     
+              else:
+                     update.Hotal_Latitude = update.Hotal_Latitude
+              if request.POST.get('long') is not None:
+                     update.Hotal_Longitude = request.POST.get('long')
+                     
+              else:
+                     update.Hotal_Longitude = update.Hotal_Longitude
 
-              data = Add_Hotal(Hotal_id=id,Hotal_Name=Hotal_Name, hotal_new_price=hotal_new_price,hotal_new_price_premium=hotal_new_price_premium,
-              hotal_discreption = hotal_discreption, Hotal_Location=Hotal_Location, Hotal_Latitude=Hotal_Latitude, Hotal_Longitude=Hotal_Longitude, Hotal_images1=Hotal_images1,
-                     date=date,
-              reception_images1=reception_images1,reception_images2=reception_images2,reception_images3=reception_images3,reception_images4=reception_images4,reception_images5=reception_images5,
-              bedroom_images1=bedroom_images1,bedroom_images2=bedroom_images2,bedroom_images3=bedroom_images3,bedroom_images4=bedroom_images4,bedroom_images5=bedroom_images5,
-              washroom_images1=washroom_images1,washroom_images2=washroom_images2,washroom_images3=washroom_images3,washroom_images4=washroom_images4,washroom_images5=washroom_images5,
-              Exterior_images1=Exterior_images1,Exterior_images2=Exterior_images2,Exterior_images3=Exterior_images3,Exterior_images4=Exterior_images4,Exterior_images5=Exterior_images5,
-              garden_images1=garden_images1,garden_images2=garden_images2,garden_images3=garden_images3,garden_images4=garden_images4,garden_images5=garden_images5, 
-              )
-              data.save()
-       # return render(request, "update_hotal.html")
-       else:
-           return render(request, 'update_hotal.html') 
-       return render(request, "update_hotal.html")
+              #  banner images
+              if request.FILES.get('Hotal_images1') is not None:
+                     update.Hotal_images1 = request.FILES.get('Hotal_images1')
+                     
+              else:
+                     update.Hotal_images1 = update.Hotal_images1
+              
+              # reception images
+
+              if request.FILES.get('reception_images1') is not None:
+                     update.reception_images1 = request.FILES.get('reception_images1')
+                     
+              else:
+                     update.reception_images1 = update.reception_images1
+
+              if request.FILES.get('reception_images2') is not None:
+                     update.reception_images2 = request.FILES.get('reception_images2')
+                     
+              else:
+                     update.reception_images2 = update.reception_images2
+              if request.FILES.get('reception_images3') is not None:
+                     update.reception_images3 = request.FILES.get('reception_images3')
+                     
+              else:
+                     update.reception_images3 = update.reception_images3
+
+              if request.FILES.get('reception_images4') is not None:
+                     update.reception_images4 = request.FILES.get('reception_images4')
+                     
+              else:
+                     update.reception_images4 = update.reception_images4
+              if request.FILES.get('reception_images5') is not None:
+                     update.reception_images5 = request.FILES.get('reception_images5')
+                     
+              else:
+                     update.reception_images5 = update.reception_images5
+
+              # bedroom images
+              if request.FILES.get('bedroom_images1') is not None:
+                     update.bedroom_images1 = request.FILES.get('bedroom_images1')
+                     
+              else:
+                     update.bedroom_images1 = update.bedroom_images1
+              if request.FILES.get('bedroom_images2') is not None:
+                     update.bedroom_images2 = request.FILES.get('bedroom_images2')
+                     
+              else:
+                     update.bedroom_images2 = update.bedroom_images2
+              if request.FILES.get('bedroom_images3') is not None:
+                     update.bedroom_images3 = request.FILES.get('bedroom_images3')
+                     
+              else:
+                     update.bedroom_images3 = update.bedroom_images3
+              if request.FILES.get('bedroom_images4') is not None:
+                     update.bedroom_images4 = request.FILES.get('bedroom_images4')
+                     
+              else:
+                     update.bedroom_images4 = update.bedroom_images4
+              if request.FILES.get('bedroom_images5') is not None:
+                     update.bedroom_images5 = request.FILES.get('bedroom_images5')
+                     
+              else:
+                     update.bedroom_images5 = update.bedroom_images5
+
+              # washroom images
+
+              if request.FILES.get('washroom_images1') is not None:
+                     update.washroom_images1 = request.FILES.get('washroom_images1')
+                     
+              else:
+                     update.washroom_images1 = update.washroom_images1
+              if request.FILES.get('washroom_images2') is not None:
+                     update.washroom_images2 = request.FILES.get('washroom_images2')
+                     
+              else:
+                     update.washroom_images2 = update.washroom_images2
+
+              if request.FILES.get('washroom_images3') is not None:
+                     update.washroom_images3 = request.FILES.get('washroom_images3')
+                     
+              else:
+                     update.washroom_images3 = update.washroom_images3
+              if request.FILES.get('washroom_images4') is not None:
+                     update.washroom_images4 = request.FILES.get('washroom_images4')
+                     
+              else:
+                     update.washroom_images4 = update.washroom_images4
+              if request.FILES.get('washroom_images5') is not None:
+                     update.washroom_images5 = request.FILES.get('washroom_images5')
+                     
+              else:
+                     update.washroom_images5 = update.washroom_images5
+
+
+              # exterior images
+
+
+              if request.FILES.get('Exterior_images1') is not None:
+                     update.Exterior_images1 = request.FILES.get('Exterior_images1')
+                     
+              else:
+                     update.Exterior_images1 = update.Exterior_images1
+
+              if request.FILES.get('Exterior_images2') is not None:
+                     update.Exterior_images2 = request.FILES.get('Exterior_images2')
+                     
+              else:
+                     update.Exterior_images2 = update.Exterior_images2
+              if request.FILES.get('Exterior_images3') is not None:
+                     update.Exterior_images3 = request.FILES.get('Exterior_images3')
+                     
+              else:
+                     update.Exterior_images3 = update.Exterior_images3
+                     
+              if request.FILES.get('Exterior_images4') is not None:
+                     update.Exterior_images4 = request.FILES.get('Exterior_images4')
+                     
+              else:
+                     update.Exterior_images4 = update.Exterior_images4
+
+              if request.FILES.get('Exterior_images5') is not None:
+                     update.Exterior_images5 = request.FILES.get('Exterior_images5')
+                     
+              else:
+                     update.Exterior_images5 = update.Exterior_images5
+
+              # garden images
+              
+              if request.FILES.get('garden_images1') is not None:
+                     update.garden_images1 = request.FILES.get('garden_images1')
+                     
+              else:
+                     update.garden_images1 = update.garden_images1
+
+              if request.FILES.get('garden_images2') is not None:
+                     update.garden_images2 = request.FILES.get('garden_images2')
+                     
+              else:
+                     update.garden_images2 = update.garden_images2
+
+              if request.FILES.get('garden_images3') is not None:
+                     update.garden_images3 = request.FILES.get('garden_images3')
+                     
+              else:
+                     update.garden_images3 = update.garden_images3
+              if request.FILES.get('garden_images4') is not None:
+                     update.garden_images4 = request.FILES.get('garden_images4')
+                     
+              else:
+                     update.garden_images4 = update.garden_images4
+              if request.FILES.get('garden_images5') is not None:
+                     update.garden_images5 = request.FILES.get('garden_images5')
+                     
+              else:
+                     update.garden_images5 = update.garden_images5
+              if request.POST.get('datetime.today()') is not None:
+                     update.date = request.POST.get('datetime.today()')
+                     
+              else:
+                     update.date = update.date
+              update.save()
+              messages.success(request,'Data Updated Sucessfully')
+              return redirect('hotel_list')
+       return render(request, 'update_hotal.html') 
 
 
 
 
 #---------------------------------------------Start Promotions---------------------------------------------------
+@admin_required()
 def promotions_save(request):
        if request.method=="POST":
               hotel_name=request.POST.get('hotel_name')
@@ -394,6 +542,7 @@ def promotions_save(request):
               return redirect('promotions_save')
        return render(request,'promotions.html')
 
+@admin_required()
 def promotion_list(request):
        data=promotions.objects.all().order_by('-id')
        paginator=Paginator(data,6)
@@ -401,13 +550,17 @@ def promotion_list(request):
        datafinal=paginator.get_page(page_number)
        return render(request,'promotion_list.html',{'data':data,'datafinal':datafinal,'page_number':page_number})
 
+@admin_required()
 def view_promotion(request,id):
        Hotal_id=promotions.objects.get(pk=id)
        return render(request,'view_promotions.html',{'Hotal_id':Hotal_id})
+
+@admin_required()
 def edit_promotion(request,id):
        data=promotions.objects.get(pk=id)
        return render(request,'edit_promotion.html',{'data':data})
 
+@admin_required()
 def update_promotion(request):
        if request.method=="POST":
               id=request.POST.get('id')
@@ -437,6 +590,8 @@ def update_promotion(request):
               update.save()
               return redirect('promotion_list')
        return render(request,'edit_promotion.html')
+
+@admin_required()
 def distroy(request,id):
        data=promotions.objects.get(pk=id)
        data.delete()
@@ -446,7 +601,7 @@ def distroy(request,id):
 
 # -----------------------------------------Start Exclusive Partners-------------------------------------------------------
 
-
+@admin_required()
 def exclusive_partners_save(request):
        if request.method=="POST":
               exclusive_partners_images1=request.FILES.get('exclusive_partners_images1')
@@ -461,6 +616,7 @@ def exclusive_partners_save(request):
               return redirect('exclusive_partners_save')
        return render(request,'exclusive_partners.html')
 
+@admin_required()
 def exclusive_partners_list(request):
        data=exclusive_partners.objects.all().order_by('-id')
        paginator=Paginator(data,6)
@@ -469,19 +625,24 @@ def exclusive_partners_list(request):
        return render(request,'list_exclusive_partners.html',{'data':data,'datafinal':datafinal,'page_number':page_number})
 
 
+@admin_required()
 def view_exclusive(request,id):
        Hotal_id=exclusive_partners.objects.get(pk=id)
        return render(request,'view_exclusives.html',{'Hotal_id':Hotal_id})
+
+@admin_required()
 def edit_exclusive(request,id):
        data=exclusive_partners.objects.get(pk=id)
        return render(request,'edit_exclusive_partners.html',{'data':data})
 
+@admin_required()
 def distroy_exclusive_list(request,id):
        data=exclusive_partners.objects.get(pk=id)
        data.delete()
        messages.success(request,'Exclusive Partners Deleted Sucessfully')
        return redirect('exclusive_partners_list')
 
+@admin_required()
 def update_exclusive(request):
        if request.method=="POST":
               id=request.POST.get('id')
@@ -514,7 +675,7 @@ def update_exclusive(request):
 #-------------------------------------------End Exclusive Partners------------------------------------------------------
 
 # ----------------------------------------------Start Holiday Packages------------------------------
-
+@admin_required()
 def holiday_packages_save(request):
        if request.method=="POST":
               Holiday_packages_images1=request.FILES.get('Holiday_packages_images1')
@@ -529,6 +690,8 @@ def holiday_packages_save(request):
               return render(request,'holiday_packages.html')
        return render(request,'holiday_packages.html')
 
+
+@admin_required()
 def list_holiday_packages(request):
        data=Holiday_packages.objects.all().order_by('-id')
        paginator=Paginator(data,6)
@@ -536,21 +699,27 @@ def list_holiday_packages(request):
        datafinal=paginator.get_page(page_number)
        return render(request,'list_holiday_packages.html',{'data':data,'datafinal':datafinal,'page_number':page_number})
 
+
+@admin_required()
 def view_holiday_packages(request,id):
        Hotal_id=Holiday_packages.objects.get(pk=id)
        return render(request,'view_holday_packages.html',{'Hotal_id':Hotal_id})
 
+
+@admin_required()
 def edit_holiday_packages(request,id):
        data=Holiday_packages.objects.get(pk=id)
        return render(request,'edit_holiday_packages.html',{'data':data})
 
+
+@admin_required()
 def distroy_holiday_packages(request,id):
        data=Holiday_packages.objects.get(pk=id)
        data.delete()
        messages.success(request,'Holidays Package Deleted Sucessfully')
        return redirect('list_holiday_packages')
 
-
+@admin_required()
 def update_holiday_packages(request):
        if request.method=="POST":
               id=request.POST.get('id')
@@ -584,7 +753,7 @@ def update_holiday_packages(request):
 
 
 #  -------------------------------------------- Start whats new----------------------------------------------------------------
-
+@admin_required()
 def whats_new_save(request):
        if request.method=="POST":
               whats_new_images1=request.FILES.get('whats_new_images1')
@@ -599,6 +768,8 @@ def whats_new_save(request):
               return render(request,'whats_new_save.html')
        return render(request,'whats_new_save.html')
 
+       
+@admin_required()
 def list_whats_new(request):
        data=whats_new.objects.all().order_by('-id')
        paginator=Paginator(data,6)
@@ -606,20 +777,24 @@ def list_whats_new(request):
        datafinal=paginator.get_page(page_number)
        return render(request,'list_whats_new.html',{'data':data,'datafinal':datafinal,'page_number':page_number})
 
-
+@admin_required()
 def view_whats_new(request,id):
        Hotal_id=whats_new.objects.get(pk=id)
        return render(request,'view_whats_new.html',{'Hotal_id':Hotal_id})
+
+@admin_required()
 def edit_whats_new(request,id):
        data=whats_new.objects.get(pk=id)
        return render(request,'edit_whats_new.html',{'data':data})
+
+@admin_required()
 def distroy_whats_new(request,id):
        data=whats_new.objects.get(pk=id)
        data.delete()
        messages.success(request,'Whats New Deleted Sucessfully')
        return redirect('list_whats_new')
 
-
+@admin_required()
 def update_whats_new(request):
        if request.method=="POST":
               id=request.POST.get('id')
@@ -653,6 +828,7 @@ def update_whats_new(request):
 # ---------------------------------------------End Whats New-------------------------------------------------------------------
 
 # ----------------------------------------------Start Offer For You--------------------------------------------------------------
+@admin_required()
 def offer_for_you_save(request):
        if request.method == "POST":
               offer_for_you_pic = request.FILES.get('offer_for_you_pic')
@@ -667,6 +843,8 @@ def offer_for_you_save(request):
               return redirect('offer_for_you_save')
        return render(request,'offers_for_you.html')
 
+
+@admin_required()
 def list_offers(request):
        data=offer_for_you.objects.all().order_by('-id')
        paginator=Paginator(data,6)
@@ -674,14 +852,17 @@ def list_offers(request):
        datafinal=paginator.get_page(page_number)
        return render(request,'list_offer_for_you.html',{'datafinal':datafinal,'data':data,'page_number':page_number})
 
+@admin_required()
 def view_offers_new(request,id):
        Hotal_id=offer_for_you.objects.get(pk=id)
        return render(request,'blog.html',{'Hotal_id':Hotal_id})
+
+@admin_required()       
 def edit_offer(request,id):
        data=offer_for_you.objects.get(pk=id)
        return render(request,'edit_offers.html',{'data':data})
 
-
+@admin_required()
 def update_offers(request):
        if request.method=="POST":
               id=request.POST.get('id')
@@ -701,6 +882,8 @@ def update_offers(request):
               return redirect('list_offers')
        return redirect('edit_offer')
 
+
+@admin_required()
 def distroy_view_offers_new(request,id):
        data=offer_for_you.objects.get(pk=id)
        data.delete()
@@ -711,6 +894,8 @@ def distroy_view_offers_new(request,id):
 # ---------------------------------------------End Offer For You-----------------------------------------------------------------------
 
 # ---------------------------------------------Start Yotube Video-------------------------------------------------------------------
+
+@admin_required()
 def youtube_video_save(request):
        if request.method=="POST":
               hotel_name=request.POST.get('hotel_name')

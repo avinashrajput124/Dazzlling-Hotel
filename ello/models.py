@@ -6,7 +6,10 @@ from email.policy import default
 from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
+from django.conf import settings
 
 class User(AbstractUser):
        is_pastudent = models.BooleanField(default=False)
@@ -14,11 +17,16 @@ class User(AbstractUser):
        address = models.TextField(max_length=120)
        first_name = models.CharField(max_length=100)
        last_name = models.CharField(max_length=100)
-       
+       gender=models.CharField(max_length=6,
+       choices=[('MALE','MALE'),('FEMALE','FEMALE')])
 
        def __str__(self):
-              return self.username 
+        return self.username
 
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
 
 class Add_Hotal(models.Model): 

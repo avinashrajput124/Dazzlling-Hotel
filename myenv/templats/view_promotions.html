@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+
+{% block title%}Hotal Review{% endblock title %}
+
+
+{% block body %}
+
+
+    <!-- PAGE -->
+    <div class="page">
+        <div class="page-main">
+
+      
+
+
+            <!--app-content open-->
+            <div class="main-content app-content mt-0">
+                <div class="side-app">
+
+                    <!-- container -->
+                    <div class="main-container container-fluid">
+
+                        <!-- PAGE-HEADER -->
+                        <div class="page-header">
+                            <h1 class="page-title">View Promotion</h1>
+                            <div>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0)">Whats New List</a></li>
+                                    
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- PAGE-HEADER END -->
+
+                        <!-- GALLERY DEMO OPEN -->
+                        <div class="demo-gallery card">
+                            <div class="card-header">
+                                <div class="card-title"></div>
+                            </div>
+                            <div class="card-body"> 
+                                <ul id="lightgallery" class="list-unstyled row">
+                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 border-bottom-0" data-responsive="{% if Hotal_id.promotions_images1 %}{{ Hotal_id.promotions_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.promotions_images1 %}{{ Hotal_id.promotions_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
+                                        <a href="">
+                                            <img class="img-responsive br-5" src="{% if Hotal_id.promotions_images1 %}{{ Hotal_id.promotions_images1.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="whats_new_images-1s">
+                                        </a>
+                                    </li>
+                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 border-bottom-0" data-responsive="{% if Hotal_id.promotions_images2 %}{{ Hotal_id.promotions_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}"  data-src="{% if Hotal_id.promotions_images2 %}{{ Hotal_id.promotions_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
+                                        <a href="">
+                                            <img class="img-responsive br-5" src="{% if Hotal_id.promotions_images2 %}{{ Hotal_id.promotions_images2.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="whats_new_images-2">
+                                        </a>
+                                    </li>
+                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 border-bottom-0" data-responsive="{% if Hotal_id.promotions_images3 %}{{ Hotal_id.promotions_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.promotions_images3 %}{{ Hotal_id.promotions_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
+                                        <a href="">
+                                            <img class="img-responsive br-5" src= "{% if Hotal_id.promotions_images3 %}{{ Hotal_id.promotions_images3.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="whats_new_images-3">
+                                        </a>
+                                    </li>
+                                    <li class="col-xs-6 col-sm-4 col-md-4 col-xl-3 mb-5 border-bottom-0" data-responsive="{% if Hotal_id.promotions_images4 %}{{ Hotal_id.promotions_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" data-src="{% if Hotal_id.promotions_images4 %}{{ Hotal_id.promotions_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" >
+                                        <a href="">
+                                            <img class="img-responsive br-5" src= "{% if Hotal_id.promotions_images4 %}{{ Hotal_id.promotions_images4.url }}{% else %}https://via.placeholder.com/240x240x.jpg{% endif %}" alt="whats_new_images-4">
+                                        </a>
+                                    </li> 
+
+                                    <li class="col-xs-12 col-sm-12 col-md-12 col-xl-12 mb-5 border-bottom-0">
+
+                                       
+                                    </li>
+                                </ul>
+                                <div class="card-body">
+                                    <div class="example">
+                                        <dl class="row">
+                                            <dt class="col-sm-3"><h4>Hotel Name&emsp;&emsp;&emsp;&emsp;&emsp;:</h4></dt>
+                                            <dd class="col-sm-9">{{Hotal_id.hotel_name}}</dd>
+                                            <dt class="col-sm-3 mt-3" ><h4>Details&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:</h4></dt>
+                                            <dd class="col-sm-9 mt-3">{{Hotal_id.promotions_Details}}</dd>
+
+                                            <dt class="col-sm-3 mt-3"><h4> Publish Date&emsp;&emsp;&emsp;&emsp;&ensp;:</h4></dt>
+                                            <dd class="col-sm-9 mt-3">
+                                                <p> {{ Hotal_id.date }} </p>
+                                        
+                                            </dd>
+
+                                            
+                                        </dl>
+                                    </div>
+                                </div>
+
+                            <div><h1></h1></div>
+                            </div>
+                        </div>
+                        <!-- GALLERY DEMO CLOSED -->
+
+             
+                    </div>
+                    <!-- container closed -->
+                </div>
+            </div>
+            <!--app-content open-->
+        </div>
+
+
+
+
+
+      
+    </div>
+
+    {% endblock body %}

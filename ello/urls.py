@@ -1,6 +1,7 @@
 from django.urls import path
 from ello import views,ApiViews
-
+from ello.ApiViews import hotelListView
+from rest_framework.authtoken.views import obtain_auth_token
  
 
 urlpatterns = [
@@ -22,7 +23,7 @@ urlpatterns = [
     path('list_offers/',views.list_offers, name="list_offers"),
     path('offer_for_you_save',views.offer_for_you_save, name="offer_for_you_save"),
     path('view_offers_new/<int:id>',views.view_offers_new, name="view_offers_new"),
-    path('edit_offer/<int:id>',views.edit_offer, name="edit_offer"),
+    path('edit_offer/<int:id>/',views.edit_offer, name="edit_offer"),
     path('update_offers',views.update_offers, name="update_offers"),
     path('distroy_view_offers_new/<int:id>',views.distroy_view_offers_new, name="distroy_view_offers_new"),
     path('youtube_video_save',views.youtube_video_save, name="youtube_video_save"),
@@ -53,18 +54,34 @@ urlpatterns = [
 
 
     path('logout', views.logoutuser, name="handleLogout"),
-    path("add_hotel", views.add_hotel, name='add-hotel.html'),
-    path("hotel_list/", views.hotel_list, name='hotel-list'),
+    path("add_hotel", views.add_hotel, name='add-hotel'),
+    path("hotel_list/", views.hotel_list, name='hotel_list'),
     path("hotel_list_filter/", views.hotel_list_filter, name='hotel_list_filter'),
     path("forgot-password", views.forgot_password, name='forgot-password.html'),
 
 
 
-    # api urls
-    path("hotel",ApiViews.hotel,name='hotel'),
 
-    #add single Hotel
-    path("add_single_hotel/<int:Hotal_id>",ApiViews.add_single_hotel,name='add_single_hotel')
+
+#  ---------------------------------login Flow api --------------------------------
+
+    path('register/', ApiViews.registeruser,name="register"),
+    path('profile/', ApiViews.profile,name="profile"),
+    path('login/', obtain_auth_token,name="login"),
+    path('User_logout/', ApiViews.User_logout,name="User_logout"),
+
+    # -------------------------------- hotal api--------------------------------
+
+    path("hotel/",ApiViews.hotel,name='hotel'),
+    path("all_promotions/",ApiViews.all_promotions,name='all_promotions'),
+    path("all_exclusive_partners/",ApiViews.all_exclusive_partners,name='all_exclusive_partners'),
+    path("all_offer_for_you/",ApiViews.all_offer_for_you,name='all_offer_for_you'),
+    path("all_holidays_packages/",ApiViews.all_holidays_packages,name='all_holidays_packages'),
+    path("all_youtube_video/",ApiViews.all_youtube_video,name='all_youtube_video'),
+    path("all_whats_new/",ApiViews.all_whats_new,name='all_whats_new'),
+    # path("filter_hotel/",ApiViews.filter_hotel,name='filter_hotel'),
+
+    path("hotelListView/",hotelListView.as_view()),
 
 
 

@@ -160,7 +160,9 @@
                                                         <div class="product-image6 p-5">
                                                             
                                                             <a href="" class="bg-light">
-                                                                <img class="img-fluid br-7 w-100" src="/media/{{i.Hotal_images1}}" alt="img">
+                                                                <img class="img-fluid br-7 w-100" src="/media/{{i.Hotal_images1}}" alt="img" style="    min-height: 160px;
+                                                                max-height: 160px;
+                                                                object-fit: cover;">
                                                             </a>
                                                             <!-- <form action="{% url 'hotal_view' i.Hotal_id %}" method="post">{% csrf_token %}
                                                                 <input type="submit" class="btn btn-primary mb-1" value="Quick View">
@@ -176,7 +178,7 @@
                                                                     <i class="fa fa-star-half-o text-warning"></i>
                                                                     <i class="fa fa-star-o text-warning"></i>
                                                                 </div>
-                                                                <div class="price">₹ {{i.hotal_new_price}}
+                                                                <div class="price">₹ {{i.hotal_new_price}}{{i.hotal_new_price_premium}}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -207,7 +209,7 @@
                                             {% endfor %}
                                             
                                             
-                                            <nav aria-label="Page navigation example">
+                                            <!-- <nav aria-label="Page navigation example">
                                                 <ul class="pagination justify-content-center">
                                              
                                                     {% if prev %}
@@ -215,9 +217,7 @@
                                                   {% else %}
                                                   <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                                                   {% endif %}
-                                                  <li class="page-item"><a class="page-link">$</a></li>
-                                                  <li class="page-item"><a class="page-link">$</a></li>
-                                                  <li class="page-item"><a class="page-link">$</a></li>
+                                                
                                              
                                                   {% if nxt %}
                                                   <li class="page-item"><a class="page-link" href="/hotel_list/?page={{nxt}}">Next</a></li>
@@ -225,7 +225,7 @@
                                                   <li class="page-item"><a class="page-link" href="#">Next</a></li>
                                                   {% endif %}
                                                 </ul>
-                                              </nav>
+                                              </nav> -->
                                         </div>
                                     </div>
                                     <!--LIST VIEW-->
