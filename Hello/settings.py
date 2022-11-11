@@ -40,7 +40,7 @@ SECRET_KEY = 'django-insecure-p@2r&c^)lu=1#89^=0w&-%nyd+4#@jk+vm2ms+o^d+%-i(h!@8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['daazzllingapp.herokuapp.com']
 
 AUTH_USER_MODEL = 'ello.User'
 # Application definition
