@@ -40,7 +40,7 @@ SECRET_KEY = 'django-insecure-p@2r&c^)lu=1#89^=0w&-%nyd+4#@jk+vm2ms+o^d+%-i(h!@8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['daazzllingapp.herokuapp.com']
+ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'ello.User'
 # Application definition
@@ -97,9 +97,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
-     'DEFAULT_PERMISSION_CLASSES':(
-                'rest_framework.permissions.IsAuthenticated',
-    ),
+
 }
 # Database
 import dj_database_url 
@@ -163,11 +161,11 @@ DISABLE_COLLECTSTATIC=1
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),]
-# PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),]
+PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media/")

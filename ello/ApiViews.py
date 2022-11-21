@@ -32,7 +32,6 @@ def registeruser(request):
 
 
 @api_view(["GET"])
-@permission_classes([IsAuthenticated])
 def User_logout(request):
     request.user.auth_token.delete()
     logout(request)
@@ -42,7 +41,6 @@ def User_logout(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def profile(request):
     if request.method=="GET":
         content = {
@@ -59,63 +57,55 @@ def profile(request):
 
 # -------------------------------------all hotl data api-----------------------------------
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def hotel(request):
     data=Add_Hotal.objects.all()
     serializer=Add_hotelSerializer(data,many=True)
-    print(serializer)
-    return Response(serializer.data)
+  
+    return Response({'AllHotel':serializer.data})
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def all_promotions(request):
     data=promotions.objects.all()
     serializer=all_promotionsSerializer(data,many=True)
-    return Response(serializer.data)
+    return Response({'AllPromotions':serializer.data})
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def all_exclusive_partners(request):
     data=exclusive_partners.objects.all()
     serializer=all_exclusivepartnersSerializer(data,many=True)
-    return Response(serializer.data)
+    return Response({'AllExclusivePartners':serializer.data})
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def all_offer_for_you(request):
     data=offer_for_you.objects.all()
     serializer=all_offer_for_youSerializer(data,many=True)
-    return Response(serializer.data)
+    return Response({'AllOffer':serializer.data})
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def all_holidays_packages(request):
     data=Holiday_packages.objects.all()
     serializer=all_holiday_packagesSerializer(data,many=True)
-    return Response(serializer.data)
+    return Response({'AllHolidaysPackages':serializer.data})
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def all_youtube_video(request):
     data=youtube_video.objects.all()
     serializer=all_youtube_videoSerializer(data,many=True)
-    return Response(serializer.data)
+    return Response({'AllYoutube':serializer.data})
 
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticated])
 def all_whats_new(request):
     data=whats_new.objects.all()
     serializer=all_whats_newSerializer(data,many=True)
-    return Response(serializer.data)
+    return Response({'AllWhatsNew':serializer.data})
 
 
 # @api_view(['GET'])
-# @permission_classes([IsAuthenticated])
-# def filter_hotel(request, format=None):
+# # def filter_hotel(request, format=None):
 #     # queryset = Add_Hotal.objects.all()
 #     filter_backends = [SearchFilter]
 #     data=Add_Hotal.objects.filter(Hotal_Name=filter_backends).all()
@@ -125,7 +115,8 @@ def all_whats_new(request):
 
 class hotelListView(ListAPIView):
     permission_classes=[(IsAuthenticated)]
+    search_fields = ['Hotal_Name']
+    filter_backends = [SearchFilter]
     queryset = Add_Hotal.objects.all()
     serializer_class = Add_hotelSerializer
-    filter_backends = [SearchFilter]
-    search_fields = ['Hotal_Name']
+   
